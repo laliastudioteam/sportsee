@@ -1,0 +1,39 @@
+@import "base";
+
+.navigation {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+    align-items: flex-end;
+
+    &-list {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        justify-content: flex-end;
+        width: 100%;
+        &-element {
+            font-size: 24px;
+            font-weight: 500;
+            margin-left: 30px;
+            @media screen and (max-width: ($maxsize_medium)) {
+                font-size: 18px;
+            }
+            &-link-active {
+                text-decoration: underline;
+                color: $color1;
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+            &-link-inactive {
+                text-decoration: none;
+                color: $color1;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

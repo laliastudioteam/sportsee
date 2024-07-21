@@ -1,0 +1,15 @@
+@import "base";
+
+.header {
+    display: flex;
+    flex-direction: row;
+    background: $color1;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    height: 90px;
+    &-content {
+        &-logo {
+            display: flex;
+            width: 180px;
+        }
+    }
+}

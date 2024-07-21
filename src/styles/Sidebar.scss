@@ -1,0 +1,36 @@
+@import "base";
+
+.sidebar {
+    display: flex;
+    background: $color1;
+    width: 117px;
+    height: 100vh;
+    vertical-align: center;
+    &-content {
+        display: flex;
+        align-items: center;
+
+        justify-content: center;
+        width: 100%;
+        &-list {
+            list-style: none;
+            padding-left: 0px;
+            &-element {
+                display: flex;
+                margin-bottom: 20px;
+                &-img {
+                    display: flex;
+                    height: 64px;
+                    width: 64px;
+                }
+            }
+        }
+        &-copyright {
+            font-size: 12px;
+            font-weight: 500;
+            transform: rotate(180deg);
+            color: $color2;
+            width: 100%;
+        }
+    }
+}
