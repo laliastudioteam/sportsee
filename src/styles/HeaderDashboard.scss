@@ -1,0 +1,32 @@
+@import "base";
+
+.headerContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 20px;
+    &-content {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        vertical-align: center;
+        align-items: center;
+
+        &-title {
+            font-weight: 500;
+            font-size: 48px;
+            color: $color1;
+        }
+        &-forename {
+            font-weight: 500;
+            font-size: 48px;
+            color: $color4;
+        }
+        &-sentence {
+            font-weight: 400;
+            font-size: 18px;
+            color: $color1;
+        }
+    }
+}

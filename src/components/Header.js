@@ -13,10 +13,15 @@ function Header (){
  return (
     <div className="header">
       <div className="header-content">
+      <div className="header-content-logo-zone">
         <NavLink to="./home">
-          <img src={logoHeader} className="header-content-logo" alt="logo-header"/>
+          <img src={logoHeader} className="header-content-logo-zone-img" alt="SportSee"/>
         </NavLink>
+        </div>
+        <div className="header-content-navigation-zone">
         <Nav />
+        </div>
+     
       </div>
     </div>
   )

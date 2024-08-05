@@ -20,9 +20,10 @@ function App() {
   return (
     <React.StrictMode>
       <div>
-        <div className="container">
+ 
           <Router>
             <Header />
+            <div className="main-container">
             <Sidebar />
             <Routes>
               <Route path="/" element={<Home />} />
@@ -32,9 +33,8 @@ function App() {
               <Route path="/communaute" element={<Communaute />} />
               <Route path="*" element={<Unknown />} />
             </Routes>
+            </div>
           </Router>
-        </div>
-
       </div>
     </React.StrictMode>
   )

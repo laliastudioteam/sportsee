@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+.headerContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+.headerContainer-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  vertical-align: center;
+  align-items: center;
+}
+.headerContainer-content-title {
+  font-weight: 500;
+  font-size: 48px;
+  color: #000;
+}
+.headerContainer-content-forename {
+  font-weight: 500;
+  font-size: 48px;
+  color: #ff0000;
+}
+.headerContainer-content-sentence {
+  font-weight: 400;
+  font-size: 18px;
+  color: #000;
+}/*# sourceMappingURL=HeaderDashboard.css.map */

@@ -20,40 +20,40 @@ function Nav() {
         </li>
         <li className="navigation-list-element">
           <NavLink
-            to="/about"
+            to="/account"
             className={({ isActive }) =>
               isActive
                 ? 'navigation-list-element-link-active'
                 : 'navigation-list-element-link-inactive'
             }
           >
-            A propos
+          Profil
           </NavLink>
         </li>
 
       <li className="navigation-list-element">
           <NavLink
-            to="/about"
+            to="/reglages"
             className={({ isActive }) =>
               isActive
                 ? 'navigation-list-element-link-active'
                 : 'navigation-list-element-link-inactive'
             }
           >
-            A propos
+         Réglages
           </NavLink>
         </li>
       
       <li className="navigation-list-element">
           <NavLink
-            to="/about"
+            to="/communaute"
             className={({ isActive }) =>
               isActive
                 ? 'navigation-list-element-link-active'
                 : 'navigation-list-element-link-inactive'
             }
           >
-            A propos
+            Communauté
           </NavLink>
         </li>
 

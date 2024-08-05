@@ -17,28 +17,37 @@ function Sidebar (){
  return (
     <div className="sidebar">
       <div className="sidebar-content">
-      <ul className="sidebar-content-list">
-      <li className="sidebar-content-list-element">
+      <div className="sidebar-content-navigation-zone">
+      <ul className="sidebar-content-navigation-zone-list">
+      <li className="sidebar-content-navigation-zone-list-element">
         <NavLink to="./home">
-        <img src={pictoYoga} className="sidebar-content-list-element-img" alt="Picto yoga"/>
+        <img src={pictoYoga} className="sidebar-content-navigation-zone-list-element-img" alt="Picto yoga"/>
         </NavLink>
         </li>
-        <li className="sidebar-content-list-element">
+        <li className="sidebar-content-navigation-zone-list-element">
         <NavLink to="./home">
-        <img src={pictoNatation} className="sidebar-content-list-element-img" alt="Picto natation"/>
+        <img src={pictoNatation} className="sidebar-content-navigation-zone-list-element-img" alt="Picto natation"/>
         </NavLink>
         </li>
-        <li className="sidebar-content-list-element">
+        <li className="sidebar-content-navigation-zone-list-element">
         <NavLink to="./home">
-        <img src={pictoCyclisme} className="sidebar-content-list-element-img" alt="Picto cyclisme"/>
+        <img src={pictoCyclisme} className="sidebar-content-navigation-zone-list-element-img" alt="Picto cyclisme"/>
         </NavLink>
-        </li>      <li className="sidebar-content-list-element">
+        </li>      
+        <li className="sidebar-content-navigation-zone-list-element">
         <NavLink to="./home">
-        <img src={pictoMusculation} className="sidebar-content-list-element-img"alt="Picto musculation"/>
+        <img src={pictoMusculation} className="sidebar-content-navigation-zone-list-element-img"alt="Picto musculation"/>
         </NavLink>
         </li>
         </ul>
-<div className="sidebar-content-copyright">Copiryght, SportSee 2020</div>
+        </div>
+        <div className="sidebar-content-copyright-zone">
+        <div className="sidebar-content-copyright-zone-copyright">
+<div className="sidebar-content-copyright-zone-copyright-text">
+Copyright, SportSee 2020
+</div>
+</div>
+      </div>
       </div>
     </div>
   )

@@ -1,0 +1,42 @@
+@import "base";
+
+.App {
+  text-align: center;
+}
+.main-container {
+  display: flex;
+  flex-direction: row;
+}
+.container-data {
+  background-color: $color2;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 20%);
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  &-charts {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    &-zone-charts {
+      width: 75%;
+      &-group {
+        width: 100%;
+        height: 50%;
+        display: flex;
+        flex-direction: row;
+        &-element {
+          width: 33%;
+          height: 250px;
+        }
+      }
+    }
+    &-zone-keys {
+      width: 25%;
+    }
+  }
+}
