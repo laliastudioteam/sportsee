@@ -16,20 +16,10 @@ const CustomTooltip = ({ active, payload, label }) => {
     );
   }
 }
-let data2;
-SessionLoad.getSession().then((json) => {
-data2 = json;
-
-
+let dataToDisplay = [];
+await SessionLoad.getSession().then((jsonData) => {
+  dataToDisplay= jsonData;
 })
-
-
-for (let element in data2) {
-console.log(element);
-}
-
-
-
 
 
 const data = [
@@ -85,7 +75,7 @@ export default class ActivityChart extends PureComponent {
         <LineChart
           width={500}
           height={100}
-          data={data}
+          data={dataToDisplay}
           margin={{
             top: 5,
             right: 30,

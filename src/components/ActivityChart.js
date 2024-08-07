@@ -4,32 +4,32 @@ import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 import ActivityLoad from "./ActivityLoad";
 
 import '../styles/ActivityChart.css'
+
+
+// Customization du Tooltip
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
       <div className="custom-tooltip">
-        <p className="label">{`${payload[0].value}`}kg</p>
-        <p className="intro">{`${payload[1].value}`}cal</p>
+        <p className="label">{`${payload[0].value}`} kilogram</p>
+        <p className="intro">{`${payload[1].value}`} calories</p>
       </div>
     );
   }
 }
 let dataToDisplay = [];
-ActivityLoad.getActivity().then((jsonData) => {
+await ActivityLoad.getActivity().then((jsonData) => {
   dataToDisplay= jsonData;
-
- console.log(jsonData);
 })
 
 
-export default class ActivityChart extends PureComponent {
+class ActivityChart extends PureComponent {
 
   render() {
 
     return (
-
 <>
-      <strong style={{ paddingLeft: "10%", fontSize: "15px" }}>Activité quotidienne</strong>
+   
       {dataToDisplay ? <ResponsiveContainer width="100%" height="100%">
         <BarChart
           width={50}
@@ -57,3 +57,4 @@ export default class ActivityChart extends PureComponent {
 
 }
 
+export default ActivityChart;

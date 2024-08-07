@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 
+import PerformanceLoad from "./PerformanceLoad";
+
 const data = [
   {
     subject: 'Endurance',
@@ -29,13 +31,19 @@ const data = [
  
 ];
 
-export default class Example extends PureComponent {
+let dataToDisplayPerformance = [];
+await PerformanceLoad.getPerformance().then((jsonData) => {
+  dataToDisplayPerformance= jsonData;
+ console.log(dataToDisplayPerformance);
+})
+
+class PerformanceChart extends PureComponent {
   
   render() {
     return (
       <>
-      {data ? <ResponsiveContainer width="100%" height="100%">
-        <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data} fill="#00a0fc" >
+      {dataToDisplayPerformance ? <ResponsiveContainer width="100%" height="100%">
+        <RadarChart cx="50%" cy="50%" outerRadius="80%" data={dataToDisplayPerformance} fill="#00a0fc" >
           <PolarGrid />
           <PolarAngleAxis dataKey="subject" />
           <PolarRadiusAxis />
@@ -46,3 +54,5 @@ export default class Example extends PureComponent {
     );
   }
 }
+
+export default PerformanceChart;

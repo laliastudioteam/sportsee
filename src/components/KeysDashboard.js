@@ -8,13 +8,18 @@ import pictoChicken from '../assets/icons/chicken.png'
 import pictoApple from '../assets/icons/apple.png'
 import pictoCheeseburger from '../assets/icons/cheeseburger.png'
 
-const KeysDashboard = () => {
+function KeysDashboard(dataUser) {
+
+  const idUser = dataUser.user.id;
+  
   const [user, setUser] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     !isLoaded &&
-      DataLoad.getUser().then((json) => {
+      DataLoad.getUser(idUser).then((json) => {
+
+        
         setUser(json);
         setIsLoaded(true);
       });

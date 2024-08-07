@@ -13,8 +13,7 @@ import Communaute from '../pages/Communaute'
 import Unknown from '../pages/Unknown'
 
 import '../styles/App.css'
-
-
+const fakeData = 1;
 
 function App() {
   return (
@@ -27,7 +26,9 @@ function App() {
             <Sidebar />
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/:id" element={<Home />} />
               <Route path="/home" element={<Home />} />
+              <Route path="/home/:id" element={<Home />} />
               <Route path="/account" element={<Account />} />
               <Route path="/reglages" element={<Reglages />} />
               <Route path="/communaute" element={<Communaute />} />

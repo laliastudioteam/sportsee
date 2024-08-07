@@ -1,35 +1,31 @@
-function ActivityLoad() {
-  let convertedArray = [];
-    const getActivity = () => {
-   return fetch("http://localhost:3000/user/12/activity", {
+
+
+  function ActivityLoad() {
+    const getActivity = async () => {
+      return await fetch("http://localhost:3000/user/12/activity", {
         type: "GET",
       }).then((res) => res.json())
       .then((res)=> {
+       let sessions = res.data.sessions;
+                  let convertedArray =[];
+                  sessions.forEach((element) => {
 
-const sessions = res.data.sessions;
+                    let day = element.day;
+                    let kg =element.kilogram; 
+                    let cal =element.calories;
+                    
+                  convertedArray.push({"day": day.substr(8),"kg" :  kg, "cal" : cal});
+                   }) 
+        
 
-sessions.forEach((element) => {
+        return ( convertedArray);
 
-  // console.log(element)});
-  let day = element.day;
-  let kg =element.kilogram; 
-  let cal =element.calories;
-convertedArray.push({"day": day.substr(8),"kg" :  kg, "cal" : cal});
-
-
-});
-//console.log(convertedArray);
-return(convertedArray);
-
-
- })  
- 
-
+ })   
  };
   
     return {
       getActivity
     };
   }
-  
+
   export default ActivityLoad();
