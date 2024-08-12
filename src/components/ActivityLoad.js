@@ -1,11 +1,13 @@
 
 
   function ActivityLoad() {
-    const getActivity = async () => {
-      return await fetch("http://localhost:3000/user/12/activity", {
+    const getActivity = async (data) => {
+      return await fetch("http://localhost:3000/user/"+data.id+"/activity", {
         type: "GET",
       }).then((res) => res.json())
       .then((res)=> {
+
+        if(data.fake===0){
        let sessions = res.data.sessions;
                   let convertedArray =[];
                   sessions.forEach((element) => {
@@ -19,6 +21,10 @@
         
 
         return ( convertedArray);
+                  }else{
+                    let convertedArray =[];
+                    return ( convertedArray);
+                  }
 
  })   
  };

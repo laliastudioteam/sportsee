@@ -8,21 +8,20 @@ import pictoChicken from '../assets/icons/chicken.png'
 import pictoApple from '../assets/icons/apple.png'
 import pictoCheeseburger from '../assets/icons/cheeseburger.png'
 
-function KeysDashboard(dataUser) {
+function KeysDashboard(dataPass) {
 
-  const idUser = dataUser.user.id;
+  const idUser = dataPass.user.id;
+  const fake = dataPass.data.fake;
   
   const [user, setUser] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     !isLoaded &&
-      DataLoad.getUser(idUser).then((json) => {
-
-        
-        setUser(json);
-        setIsLoaded(true);
-      });
+    DataLoad.getUser({id:idUser, fake:fake}).then((json) => {
+      setUser(json);
+      setIsLoaded(true);
+    });
 
   }, [isLoaded]);
   if(isLoaded){

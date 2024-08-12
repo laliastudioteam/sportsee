@@ -72,10 +72,12 @@ export default class ActivityChart extends PureComponent {
     return (
       <>
       {data ? <ResponsiveContainer width="100%" height="100%">
+      <div>
         <LineChart
           width={500}
           height={100}
           data={dataToDisplay}
+          background-color={"red"}
           margin={{
             top: 5,
             right: 30,
@@ -90,6 +92,7 @@ export default class ActivityChart extends PureComponent {
           <Legend />
           <Line type="monotone" dataKey="nb" stroke="#8884d8" activeDot={{ r: 8 }} />
         </LineChart>
+        </div>
       </ResponsiveContainer> : "Error loading Data"  }
       </>
     );

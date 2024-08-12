@@ -1,4 +1,4 @@
-function Account() {
+function Account({fake}) {
   return (
     <div className="about">
  

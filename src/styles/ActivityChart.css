@@ -4,4 +4,14 @@
   font-size: 12px;
   padding: 10px;
   color: #fff;
+}
+
+.title-activity {
+  margin-left: 40px;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.recharts-default-legend {
+  margin-bottom: 30px !important;
 }/*# sourceMappingURL=ActivityChart.css.map */

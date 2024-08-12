@@ -1,6 +1,6 @@
-function ActivityLoad() {
-    const getActivity = () => {
-      return fetch("http://localhost:3000/user/12/activity", {
+function ScoreLoad() {
+    const getScore = (idUser) => {
+      return fetch("http://localhost:3000/user/"+idUser+"/activity", {
         type: "GET",
       }).then((res) => res.json())
       .then((res)=> {
@@ -9,8 +9,8 @@ function ActivityLoad() {
  };
   
     return {
-      getActivity
+      getScore
     };
   }
   
-  export default ActivityLoad();
+  export default ScoreLoad();

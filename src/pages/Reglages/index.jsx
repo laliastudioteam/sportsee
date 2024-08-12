@@ -1,4 +1,4 @@
-function Reglages() {
+function Reglages({fake}) {
     return (
       <div className="about">
    

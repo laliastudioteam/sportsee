@@ -1,4 +1,4 @@
-function Communaute() {
+function Communaute({fake}) {
     return (
       <div className="about">
    

@@ -17,20 +17,30 @@ const CustomTooltip = ({ active, payload, label }) => {
     );
   }
 }
-let dataToDisplay = [];
-await ActivityLoad.getActivity().then((jsonData) => {
+let dataToDisplay={};
+async function loadActivityData(idUser,fake){
+
+await ActivityLoad.getActivity({id:idUser, fake:fake}).then((jsonData) => {
   dataToDisplay= jsonData;
+  console.log(dataToDisplay);
 })
+}
 
 
 class ActivityChart extends PureComponent {
+
+constructor(props){
+  super(props);
+ loadActivityData(this.props.user.id,this.props.data.fake);
+}
 
   render() {
 
     return (
 <>
-   
+
       {dataToDisplay ? <ResponsiveContainer width="100%" height="100%">
+        <div className='title-activity'>Activité quotidienne</div>
         <BarChart
           width={50}
           height={1000}

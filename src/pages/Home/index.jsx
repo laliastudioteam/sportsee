@@ -13,50 +13,40 @@ import PerformanceChart from "../../components/PerformanceChart"
 import ScoreChart from "../../components/ScoreChart"
 
 
-function Home() {
-      
-      
+
+function Home({fake}) {
+
+ {fake===1 ?  console.log("fake mode activated") :  console.log("fake mode unactivated") };
+
       // GET ID User
    const { id } = useParams()
 
   const navigate = useNavigate()
 
-
-
     return (
       <div className="container-data">
-
-
-      <HeaderDashboard user={{ id: id }}/>
+      <HeaderDashboard user={{ id: id }} data={{fake : fake}}/>
       <div className="container-data-charts">
       <div className="container-data-charts-zone-charts">
       <div className="container-data-charts-zone-charts-group">
-      <ActivityChart user={{ id: id }}/>
+      <ActivityChart user={{ id: id }} data={{fake : fake}}/>
       </div>
       <div className="container-data-charts-zone-charts-group">
       <div className="container-data-charts-zone-charts-group-element">
-<SessionChart/>
-</div>
+      <SessionChart user={{ id: id }} data={{fake : fake}}/>
+      </div>
       <div className="container-data-charts-zone-charts-group-element">
-<PerformanceChart/>
-</div>
+      <PerformanceChart user={{ id: id }} data={{fake : fake}}/>
+      </div>
       <div className="container-data-charts-zone-charts-group-element">
-<ScoreChart/>
-</div>
-
-</div>
-
-    
+      <ScoreChart user={{ id: id }} data={{fake : fake}}/>
+      </div>
+      </div>
       </div>
       <div className="container-data-charts-zone-keys">
-<KeysDashboard user={{ id: id }}/>
+<KeysDashboard user={{ id: id }} data={{fake : fake}}/>
 </div>
-
-
-
       </div>
-
-
       </div>
     )
   }

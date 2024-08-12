@@ -4,14 +4,16 @@ import DataLoad from "./DataLoad";
 
 import '../styles/HeaderDashboard.css'
 
-function HeaderDashboard(dataUser) {
-  const idUser = dataUser.user.id;
+function HeaderDashboard(dataPass) {
+  const idUser = dataPass.user.id;
+  const fake = dataPass.data.fake;
+
   const [user, setUser] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     !isLoaded &&
-      DataLoad.getUser(idUser).then((json) => {
+      DataLoad.getUser({id:idUser, fake:fake}).then((json) => {
         setUser(json);
         setIsLoaded(true);
       });
@@ -19,6 +21,8 @@ function HeaderDashboard(dataUser) {
   }, [isLoaded]);
   if(isLoaded){
         return(
+          <>
+
             <div className="headerContainer">
             <div className="headerContanier-content">
             <span className="headerContainer-content-title">
@@ -28,6 +32,7 @@ function HeaderDashboard(dataUser) {
             <div className="headerContainer-content-sentence">Félicitations ! Vous avez explosé vos objectifs hier 👏</div>
             </div>
             </div>
+            </>
             )
         }
 }
