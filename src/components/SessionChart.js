@@ -6,78 +6,55 @@ import SessionLoad from "./SessionLoad";
 
 import '../styles/SessionChart.css'
 
-const CustomTooltip = ({ active, payload, label }) => {
-  if (active && payload && payload.length) {
-    return (
-      <div className="custom-tooltip">
-        <p className="label">{`${payload[0].value}`}kg</p>
-        <p className="intro">{`${payload[1].value}`}cal</p>
-      </div>
-    );
+
+
+class SessionChart extends PureComponent {
+
+  constructor(props){
+    super(props);
+  
+  this.state = {
+  dataToDisplay:[],
+  loading:true,
+  error:null,
+  parametres:props
+  
   }
-}
-let dataToDisplay = [];
-await SessionLoad.getSession().then((jsonData) => {
-  dataToDisplay= jsonData;
-})
-
-
-const data = [
-  {
-day:"L",
-nb: 5,
-
+  }
   
-  },
-  {
-day:"M",
-nb: 5,
-
-
-  },
-  {
-   day:"M", 
-   nb: 3,
-
-
-  },
-  {
-    day:"J", 
-    nb: 5,
-
-  },
-  {
-    day:"V", 
-    nb: 6,
+  componentDidMount() {
+    
+    SessionLoad.getSession(this.props.user.id, this.props.data.fake).then((data) => {
+      this.setState({dataToDisplay : data, loading: false });
+  })
+  .catch((error) => {
+      console.error('Erreur de récupération des données:', error);
+      this.setState({ error: error, loading: false });
+  });
   
+  }
+  
+    render() {
+  
+      const { dataToDisplay, loading, error } = this.state;
+  
+      if (loading) {
+        return <p>Chargement des données</p>;
+      }
+  
+      if (error) {
+        return <p>Erreur : {error.message}</p>;
+      }
+  
+  
+      return (
 
-  },
-  {
-    day:"S", 
-    nb: 4,
-
-  },
-  {
-    day:"D", 
-    nb: 3,
-
-
-  },
-];
-
-
-export default class ActivityChart extends PureComponent {
-
-  render() {
-    return (
       <>
-      {data ? <ResponsiveContainer width="100%" height="100%">
-      <div>
+      <ResponsiveContainer width="100%" height="100%">
         <LineChart
           width={500}
-          height={100}
+          height={300}
           data={dataToDisplay}
-          background-color={"red"}
           margin={{
             top: 5,
             right: 30,
@@ -86,15 +63,18 @@ export default class ActivityChart extends PureComponent {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="day" />
+          <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="nb" stroke="#8884d8" activeDot={{ r: 8 }} />
+   
+          <Line type="monotone" dataKey="nb" stroke="#82ca9d" />
         </LineChart>
-        </div>
-      </ResponsiveContainer> : "Error loading Data"  }
+      </ResponsiveContainer>
+    
       </>
     );
   }
 }
+
+export default SessionChart;

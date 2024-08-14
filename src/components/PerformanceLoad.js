@@ -1,35 +1,34 @@
 
+import {dataPerformance} from '../data/mockup.js';
 
   function PerformanceLoad() {
-    const getPerformance = async () => {
-      return await fetch("http://localhost:3000/user/12/performance", {
+    const getPerformance = async (user,data) => {
+
+      return await fetch("http://localhost:3000/user/"+user+"/performance", {
         type: "GET",
       }).then((res) => res.json())
       .then((res)=> {
+
  const kind = res.data.kind;
-
-     const data = res.data.data;
-     let dataArray = [];
-
-  //let test=  Object.entries(data).map(kind,data);
-    
-
-
-
-
-    console.log(dataArray);
-
-
-     let result = Object.entries(kind);
+ const dataKind = res.data.data;
 
                   let convertedArray =[];
 
-                  for (const [key, value] of Object.entries(result)) {
-                    
-                 convertedArray.push({"subject": value[1] });
+for (let keyKind in kind) {
+  var valueKind = kind[keyKind];
+
+
+  
+                 for (let keyData in dataKind) {
+                  var valueData = dataKind[keyData];
+         
+         if(keyKind.toString()===valueData["kind"].toString()){
+                  convertedArray.push({"kind": valueKind, "nb": valueData["value"]});
+         }
                    }
-        
-console.log(convertedArray);
+                  } 
+                
+
         return ( convertedArray);
 
  })

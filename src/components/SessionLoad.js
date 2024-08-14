@@ -1,7 +1,7 @@
 
 
 function SessionLoad() {
-  const getSession = async () => {
+  const getSession = async (data) => {
     return await fetch("http://localhost:3000/user/12/average-sessions", {
       type: "GET",
     }).then((res) => res.json())

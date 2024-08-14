@@ -17,29 +17,51 @@ const CustomTooltip = ({ active, payload, label }) => {
     );
   }
 }
-let dataToDisplay={};
-async function loadActivityData(idUser,fake){
-
-await ActivityLoad.getActivity({id:idUser, fake:fake}).then((jsonData) => {
-  dataToDisplay= jsonData;
-  console.log(dataToDisplay);
-})
-}
 
 
 class ActivityChart extends PureComponent {
 
 constructor(props){
   super(props);
- loadActivityData(this.props.user.id,this.props.data.fake);
+
+this.state = {
+dataToDisplay:[],
+loading:true,
+error:null,
+parametres:props
+
+}
+}
+
+componentDidMount() {
+  
+  ActivityLoad.getActivity(this.props.user.id, this.props.data.fake).then((data) => {
+    this.setState({dataToDisplay : data, loading: false });
+})
+.catch((error) => {
+    console.error('Erreur de récupération des données:', error);
+    this.setState({ error: error, loading: false });
+});
+
 }
 
   render() {
 
+    const { dataToDisplay, loading, error } = this.state;
+
+    if (loading) {
+      return <p>Chargement des données</p>;
+    }
+
+    if (error) {
+      return <p>Erreur : {error.message}</p>;
+    }
+
+
     return (
 <>
 
-      {dataToDisplay ? <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height="100%">
         <div className='title-activity'>Activité quotidienne</div>
         <BarChart
           width={50}
@@ -60,7 +82,7 @@ constructor(props){
           <Bar dataKey="kg" fill="#000000" barSize={10} radius={[10, 10, 0, 0]} activeBar={<Rectangle fill="#000" stroke="noire" />} />
           <Bar dataKey="cal" fill="#FF0000" barSize={10} radius={[10, 10, 0, 0]} activeBar={<Rectangle fill="#f00" stroke="rouge" />} />
         </BarChart>
-      </ResponsiveContainer> : "Error loading Data"  }
+      </ResponsiveContainer>
       </>
     );
   }

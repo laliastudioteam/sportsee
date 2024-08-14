@@ -1,16 +1,22 @@
 
 
-  function ActivityLoad() {
-    const getActivity = async (data) => {
-      return await fetch("http://localhost:3000/user/"+data.id+"/activity", {
+function ActivityLoad() {
+
+
+
+    const getActivity = async (user,data) => {
+
+
+
+      return await fetch("http://localhost:3000/user/"+user+"/activity", {
         type: "GET",
       }).then((res) => res.json())
       .then((res)=> {
 
-        if(data.fake===0){
+
        let sessions = res.data.sessions;
-                  let convertedArray =[];
-                  sessions.forEach((element) => {
+       let convertedArray =[];
+       sessions.forEach((element) => {
 
                     let day = element.day;
                     let kg =element.kilogram; 
@@ -21,10 +27,7 @@
         
 
         return ( convertedArray);
-                  }else{
-                    let convertedArray =[];
-                    return ( convertedArray);
-                  }
+                 
 
  })   
  };

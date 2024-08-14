@@ -12,8 +12,6 @@ import SessionChart from "../../components/SessionChart"
 import PerformanceChart from "../../components/PerformanceChart"
 import ScoreChart from "../../components/ScoreChart"
 
-
-
 function Home({fake}) {
 
  {fake===1 ?  console.log("fake mode activated") :  console.log("fake mode unactivated") };
