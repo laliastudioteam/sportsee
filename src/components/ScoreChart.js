@@ -7,7 +7,7 @@ import '../styles/ScoreChart.css'
 
 const data = [
   {
-    name: '18-24',
+    name: 'score',
     uv: 92,
     pv: 2400,
     fill: '#F00',
@@ -30,7 +30,9 @@ export default class ScoreChart extends PureComponent {
   
   componentDidMount() {
 
-    ScoreLoad.getScore(this.props.user.id, this.props.data.fake).then((data) => {
+    const id=this.props.user.id;
+    const fake=this.props.data.fake;
+    ScoreLoad.getScore({id, fake}).then((data) => {
       this.setState({dataToDisplay : data, loading: false });
   })
   .catch((error) => {
@@ -43,7 +45,7 @@ export default class ScoreChart extends PureComponent {
   render() {
 
     const { dataToDisplay, loading, error } = this.state;
-  
+console.log(dataToDisplay*100);
     if (loading) {
       return <p>Chargement des données</p>;
     }
@@ -73,14 +75,14 @@ export default class ScoreChart extends PureComponent {
 <div className='scoreChart-title'>Score</div> 
 <div className='scoreChart-subtitle'><div className='scoreChart-subtitle-text'>de votre objectif</div></div> 
 
-      {data ? <ResponsiveContainer width="100%" height="100%">
+      {dataToDisplay ? <ResponsiveContainer width="100%" height="100%">
         <RadialBarChart
         cx="50%"  // Position horizontale du centre du graphique
         cy="50%"  // Position verticale du centre du graphique
         innerRadius="90%"  // Rayon intérieur
         outerRadius="100%"  // Rayon extérieur
         barSize={10}  // Épaisseur de la barre
-        data={data}  // Les données avec la seule barre
+        data={dataToDisplay * 100}  // Les données avec la seule barre
         startAngle={90}  // Angle de départ pour la barre
         endAngle={450}  // Angle de fin pour la barre (360 + 90)
       >

@@ -3,8 +3,6 @@ import { dataActivity } from '../data/mockup.js';
 function ActivityLoad() {
 
   const getActivity = async (user, dataFake) => {
-    console.log(dataFake);
-    let resultat = [];
 
     if (dataFake === 0) {
       // Si dataFake est 0, on fait un fetch pour obtenir les données depuis l'API
@@ -24,14 +22,13 @@ function ActivityLoad() {
       return convertedArray;
     } else {
       // Si dataFake n'est pas 0, on utilise les données du mock
-      let sessions =[];
+
       return new Promise((resolve, reject) => {
         resolve(dataActivity); // On résout directement avec les données mockées
       }).then(resultat => {
-        
+        let sessions =resultat.data.sessions;
         let convertedArray = [];
-console.log(sessions);
-      resultat.data.forEach(element => {
+     sessions.forEach(element => {
           let day = element.day.substr(8);  // Extrait le jour
           let kg = element.kilogram;        // Poids en kilogrammes
           let cal = element.calories;       // Calories

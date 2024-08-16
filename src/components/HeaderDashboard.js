@@ -11,7 +11,6 @@ function HeaderDashboard(dataPass) {
   const [user, setUser] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-
   useEffect(() => {
 
     !isLoaded &&

@@ -61,10 +61,9 @@ componentDidMount() {
     return (
       
       <div className="activityChart-container">
-                  <div className='activityChart-title'>Score</div> 
+                  <div className='activityChart-title'>Activité quotidienne</div> 
          {dataToDisplay ? 
       <ResponsiveContainer width="100%" height="100%">
-        {/* <div className='activtyChart-title'>Activité quotidienne</div> */}
         <BarChart
           width={50}
           height={1000}
