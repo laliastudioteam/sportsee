@@ -1,0 +1,26 @@
+@import "base";
+
+.custom-tooltip {
+    background: $color4;
+    font-size: 12px;
+    padding: 10px;
+    color: $color2;
+}
+
+.performanceChart-container {
+    background: $color9;
+    display: flex;
+    border-radius: 10px;
+    width: calc(100% - 40px);
+    height: 100%;
+    align-items: center;
+    padding: 20px;
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0px 4px 4px 0px #00000040;
+    }
+}
+
+.recharts-polar-angle-axis-tick-value {
+    font-size: 12px;
+}

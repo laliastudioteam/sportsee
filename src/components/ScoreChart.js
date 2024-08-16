@@ -1,76 +1,100 @@
 import React, { PureComponent } from 'react';
-import { RadialBarChart, RadialBar, Legend, ResponsiveContainer } from 'recharts';
+import { RadialBarChart, RadialBar, PolarAngleAxis, ResponsiveContainer } from 'recharts';
+
+import ScoreLoad from "./ScoreLoad";
+
+import '../styles/ScoreChart.css'
 
 const data = [
   {
     name: '18-24',
-    uv: 31.47,
+    uv: 92,
     pv: 2400,
-    fill: '#8884d8',
-  },
-  {
-    name: '25-29',
-    uv: 26.69,
-    pv: 4567,
-    fill: '#83a6ed',
-  },
-  {
-    name: '30-34',
-    uv: 15.69,
-    pv: 1398,
-    fill: '#8dd1e1',
-  },
-  {
-    name: '35-39',
-    uv: 8.22,
-    pv: 9800,
-    fill: '#82ca9d',
-  },
-  {
-    name: '40-49',
-    uv: 8.63,
-    pv: 3908,
-    fill: '#a4de6c',
-  },
-  {
-    name: '50+',
-    uv: 2.63,
-    pv: 4800,
-    fill: '#d0ed57',
-  },
-  {
-    name: 'unknow',
-    uv: 6.67,
-    pv: 4800,
-    fill: '#ffc658',
+    fill: '#F00',
   },
 ];
 
-const style = {
-  top: '50%',
-  right: 0,
-  transform: 'translate(0, -50%)',
-  lineHeight: '24px',
-};
 
 export default class ScoreChart extends PureComponent {
 
+  constructor(props){
+    super(props);
+  
+  this.state = {
+  dataToDisplay:[],
+  loading:true,
+  error:null
+  
+  }
+  }
+  
+  componentDidMount() {
+
+    ScoreLoad.getScore(this.props.user.id, this.props.data.fake).then((data) => {
+      this.setState({dataToDisplay : data, loading: false });
+  })
+  .catch((error) => {
+      console.error('Erreur de récupération des données:', error);
+      this.setState({ error: error, loading: false });
+  });
+  
+  }
+
   render() {
+
+    const { dataToDisplay, loading, error } = this.state;
+  
+    if (loading) {
+      return <p>Chargement des données</p>;
+    }
+
+    if (error) {
+      return <p>Erreur : {error.message}</p>;
+    }
+
+    const renderLabel = ({ cx, cy, value }) => {
+      return (
+     <text
+          x={cx}
+          y={cy}
+          fill="#000"
+          textAnchor="middle"
+          dominantBaseline="middle"
+          style={{ fontSize: '26px', fontWeight: 'bold'}}
+        >
+          {`${value}%`}
+        </text>
+      );
+    };
+
     return (
-      <>
+      <div className="scoreChart-container">
+
+<div className='scoreChart-title'>Score</div> 
+<div className='scoreChart-subtitle'><div className='scoreChart-subtitle-text'>de votre objectif</div></div> 
+
       {data ? <ResponsiveContainer width="100%" height="100%">
-        <RadialBarChart cx="50%" cy="50%" innerRadius="10%" outerRadius="80%" barSize={10} data={data}>
-          <RadialBar
-            minAngle={15}
-            label={{ position: 'insideStart', fill: '#fff' }}
-            background
-            clockWise
-            dataKey="uv"
-          />
-          <Legend iconSize={10} layout="vertical" verticalAlign="middle" wrapperStyle={style} />
-        </RadialBarChart>
+        <RadialBarChart
+        cx="50%"  // Position horizontale du centre du graphique
+        cy="50%"  // Position verticale du centre du graphique
+        innerRadius="90%"  // Rayon intérieur
+        outerRadius="100%"  // Rayon extérieur
+        barSize={10}  // Épaisseur de la barre
+        data={data}  // Les données avec la seule barre
+        startAngle={90}  // Angle de départ pour la barre
+        endAngle={450}  // Angle de fin pour la barre (360 + 90)
+      >
+        <PolarAngleAxis type="number" domain={[0, 100]} tick={false}/>
+        <RadialBar
+          minAngle={15}
+          clockWise
+          dataKey="uv"
+          cornerRadius={5}  // Rayon pour arrondir les bouts des barres
+          label={renderLabel}
+        />
+      </RadialBarChart>
       </ResponsiveContainer> : "Error loading Data" }
-      </>
+      </div>
     );
   }
 }

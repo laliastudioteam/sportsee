@@ -3,22 +3,25 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  margin-bottom: 20px;
-  padding: 20px;
+  margin-bottom: 40px;
 }
 .headerContainer-content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
   vertical-align: center;
-  align-items: center;
 }
-.headerContainer-content-title {
+.headerContainer-content-group {
+  display: flex;
+  flex-direction: row;
+}
+.headerContainer-content-group-title {
   font-weight: 500;
   font-size: 48px;
   color: #000;
+  margin-right: 10px;
 }
-.headerContainer-content-forename {
+.headerContainer-content-group-forename {
   font-weight: 500;
   font-size: 48px;
   color: #ff0000;

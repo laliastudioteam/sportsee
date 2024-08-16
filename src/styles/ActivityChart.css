@@ -1,15 +1,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-.custom-tooltip {
+.activityChart-custom-tooltip {
   background: #ff0000;
   font-size: 12px;
   padding: 10px;
   color: #fff;
 }
 
-.title-activity {
-  margin-left: 40px;
+.activityChart-container {
+  position: relative;
+  background: #f6f6f6;
+  display: flex;
+  border-radius: 10px;
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  align-items: center;
+  padding: 20px;
+}
+
+.activityChart-title {
   font-weight: 500;
   font-size: 15px;
+  color: #000;
+  width: 50%;
+  font-weight: bold;
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
 
 .recharts-default-legend {

@@ -3,6 +3,8 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Responsi
 
 import PerformanceLoad from "./PerformanceLoad";
 
+import '../styles/PerformanceChart.css'
+
 class PerformanceChart extends PureComponent {
 
   constructor(props){
@@ -44,16 +46,17 @@ class PerformanceChart extends PureComponent {
       return (
   
 
-      <>
+        <div className="performanceChart-container">
       {dataToDisplay ? <ResponsiveContainer width="100%" height="100%">
-        <RadarChart cx="50%" cy="50%" outerRadius="80%" data={dataToDisplay} fill="#00a0fc" >
+        <RadarChart cx="50%" cy="50%"  outerRadius="80%" data={dataToDisplay} fill="rgba(255, 1, 1, 0.7)" >
           <PolarGrid />
           <PolarAngleAxis dataKey="kind" />
-          <PolarRadiusAxis />
+          <PolarRadiusAxis tick={false}/>
           <Radar name="Mike" dataKey="nb" />
+      
         </RadarChart>
-      </ResponsiveContainer> : null }
-      </>
+      </ResponsiveContainer>  : "Error loading Data" }
+      </div>
     );
   }
 }

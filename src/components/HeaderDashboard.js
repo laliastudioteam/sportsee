@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 
 import DataLoad from "./DataLoad";
 
-
-
 import '../styles/HeaderDashboard.css'
 
 function HeaderDashboard(dataPass) {
@@ -12,8 +10,6 @@ function HeaderDashboard(dataPass) {
 
   const [user, setUser] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
-
-
 
 
   useEffect(() => {
@@ -29,11 +25,13 @@ function HeaderDashboard(dataPass) {
         return(
           <>
             <div className="headerContainer">
-            <div className="headerContanier-content">
-            <span className="headerContainer-content-title">
-              Bonjour </span>
-              <span className="headerContainer-content-forename">{user.data.userInfos.firstName}</span>
-            <div className="headerContainer-content-sentence">{fake ?  "Félicitations ! Vous etes en mode fake data" : "Félicitations ! Vous avez explosé vos objectifs hier 👏" }</div>
+            <div className="headerContainer-content">
+            <div className="headerContainer-content-group">
+            <span className="headerContainer-content-group-title">
+              Bonjour</span>
+              <span className="headerContainer-content-group-forename">{user.data.userInfos.firstName}</span>
+           </div>
+            <div className="headerContainer-content-sentence">{fake ?  "Bravo : Vous etes en mode fake data" : "Félicitations ! Vous avez explosé vos objectifs hier 👏" }</div>
             </div>
             </div>
             </>

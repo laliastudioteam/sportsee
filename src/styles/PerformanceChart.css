@@ -1,14 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-.sessionChart-custom-tooltip {
-  background: #fff;
+.custom-tooltip {
+  background: #ff0000;
   font-size: 12px;
   padding: 10px;
-  color: #000;
+  color: #fff;
 }
 
-.sessionChart-container {
-  position: relative;
-  background: #ff0000;
+.performanceChart-container {
+  background: #282d30;
   display: flex;
   border-radius: 10px;
   width: calc(100% - 40px);
@@ -16,18 +15,11 @@
   align-items: center;
   padding: 20px;
 }
-.sessionChart-container:hover {
+.performanceChart-container:hover {
   cursor: pointer;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2509803922);
 }
 
-.sessionChart-title {
-  font-weight: 500;
-  font-size: 15px;
-  color: #fff;
-  width: 50%;
-  font-weight: bold;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-}/*# sourceMappingURL=SessionChart.css.map */
+.recharts-polar-angle-axis-tick-value {
+  font-size: 12px;
+}/*# sourceMappingURL=PerformanceChart.css.map */

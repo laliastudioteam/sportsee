@@ -10,7 +10,7 @@ import '../styles/ActivityChart.css'
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="custom-tooltip">
+      <div className="activityChart-custom-tooltip">
         <p className="label">{`${payload[0].value}`} kilogram</p>
         <p className="intro">{`${payload[1].value}`} calories</p>
       </div>
@@ -59,10 +59,12 @@ componentDidMount() {
 
 
     return (
-<>
-
+      
+      <div className="activityChart-container">
+                  <div className='activityChart-title'>Score</div> 
+         {dataToDisplay ? 
       <ResponsiveContainer width="100%" height="100%">
-        <div className='title-activity'>Activité quotidienne</div>
+        {/* <div className='activtyChart-title'>Activité quotidienne</div> */}
         <BarChart
           width={50}
           height={1000}
@@ -76,14 +78,14 @@ componentDidMount() {
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="day" />
-          <YAxis />
-          <Tooltip content={<CustomTooltip />}/>
+          <YAxis orientation="right"/>
+          <Tooltip content={<CustomTooltip />} />
           <Legend  verticalAlign="top" align="right" />
           <Bar dataKey="kg" fill="#000000" barSize={10} radius={[10, 10, 0, 0]} activeBar={<Rectangle fill="#000" stroke="noire" />} />
           <Bar dataKey="cal" fill="#FF0000" barSize={10} radius={[10, 10, 0, 0]} activeBar={<Rectangle fill="#f00" stroke="rouge" />} />
         </BarChart>
-      </ResponsiveContainer>
-      </>
+      </ResponsiveContainer> : null}
+      </div>
     );
   }
 

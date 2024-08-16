@@ -4,24 +4,27 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    margin-bottom: 20px;
-    padding: 20px;
+    margin-bottom: 40px;
     &-content {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         width: 100%;
         vertical-align: center;
-        align-items: center;
 
-        &-title {
-            font-weight: 500;
-            font-size: 48px;
-            color: $color1;
-        }
-        &-forename {
-            font-weight: 500;
-            font-size: 48px;
-            color: $color4;
+        &-group {
+            display: flex;
+            flex-direction: row;
+            &-title {
+                font-weight: 500;
+                font-size: 48px;
+                color: $color1;
+                margin-right: 10px;
+            }
+            &-forename {
+                font-weight: 500;
+                font-size: 48px;
+                color: $color4;
+            }
         }
         &-sentence {
             font-weight: 400;

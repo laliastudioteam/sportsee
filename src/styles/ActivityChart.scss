@@ -1,15 +1,30 @@
 @import "base";
 
-.custom-tooltip {
+.activityChart-custom-tooltip {
     background: $color4;
     font-size: 12px;
     padding: 10px;
     color: $color2;
 }
-.title-activity {
-    margin-left: 40px;
+.activityChart-container {
+    position: relative;
+    background: $color3;
+    display: flex;
+    border-radius: 10px;
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    align-items: center;
+    padding: 20px;
+}
+.activityChart-title {
     font-weight: 500;
     font-size: 15px;
+    color: $color1;
+    width: 50%;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    left: 20px;
 }
 
 .recharts-default-legend {

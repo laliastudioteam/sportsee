@@ -1,1 +1,33 @@
 @import "base";
+
+.sessionChart-custom-tooltip {
+    background: $color2;
+    font-size: 12px;
+    padding: 10px;
+    color: $color1;
+}
+.sessionChart-container {
+    position: relative;
+    background: $color4;
+    display: flex;
+    border-radius: 10px;
+    width: calc(100% - 40px);
+    height: 100%;
+    align-items: center;
+    padding: 20px;
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0px 4px 4px 0px #00000040;
+    }
+}
+
+.sessionChart-title {
+    font-weight: 500;
+    font-size: 15px;
+    color: $color2;
+    width: 50%;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}

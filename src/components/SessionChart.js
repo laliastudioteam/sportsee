@@ -1,10 +1,21 @@
 import React, { useState, useEffect, PureComponent } from "react";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, Legend ,ResponsiveContainer } from 'recharts';
 
 
 import SessionLoad from "./SessionLoad";
 
 import '../styles/SessionChart.css'
+
+// Customization du Tooltip
+const CustomTooltip = ({ active, payload, label }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="sessionChart-custom-tooltip">
+      <p className="label">{`${payload[0].value} min`}</p>
+    </div>
+    );
+  }
+}
 
 
 
@@ -49,8 +60,11 @@ class SessionChart extends PureComponent {
   
       return (
 
-      <>
+      <div className="sessionChart-container">
+         {dataToDisplay ? 
       <ResponsiveContainer width="100%" height="100%">
+    
+       <div className='sessionChart-title'>Durée moyenne des sessions</div> 
         <LineChart
           width={500}
           height={300}
@@ -62,17 +76,14 @@ class SessionChart extends PureComponent {
             bottom: 5,
           }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-   
-          <Line type="monotone" dataKey="nb" stroke="#82ca9d" />
+          <XAxis dataKey="day" stroke="#ffffff" />
+          <YAxis tick={false} hide/>
+          <Tooltip content={<CustomTooltip />}  />
+
+          <Line type="monotone" dataKey="nb" stroke="#ffffff" />
         </LineChart>
-      </ResponsiveContainer>
-    
-      </>
+      </ResponsiveContainer>  : "Error loading Data" }
+      </div>
     );
   }
 }
