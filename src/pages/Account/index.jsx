@@ -1,9 +1,5 @@
 function Account({fake}) {
-  return (
-    <div className="about">
- 
-    </div>
-  )
+	return <div className="about"></div>;
 }
 
-export default Account
+export default Account;

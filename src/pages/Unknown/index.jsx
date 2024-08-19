@@ -1,10 +1,5 @@
 function Unknown() {
-    return (
-      <div className="about">
-   
-      </div>
-    )
-  }
-  
-  export default Unknown
-  
+	return <div className="about"></div>;
+}
+
+export default Unknown;

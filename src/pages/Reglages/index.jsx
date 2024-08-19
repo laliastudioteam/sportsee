@@ -1,10 +1,5 @@
 function Reglages({fake}) {
-    return (
-      <div className="about">
-   
-      </div>
-    )
-  }
-  
-  export default Reglages
-  
+	return <div className="about"></div>;
+}
+
+export default Reglages;
