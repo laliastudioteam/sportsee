@@ -25,6 +25,9 @@
     position: absolute;
     top: 20px;
     left: 20px;
+    @media screen and (max-width: $maxsize_medium) {
+        font-size: 12px;
+    }
 }
 
 .recharts-default-legend {

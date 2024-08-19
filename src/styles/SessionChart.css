@@ -30,4 +30,9 @@
   position: absolute;
   top: 20px;
   left: 20px;
+}
+@media screen and (max-width: 992px) {
+  .sessionChart-title {
+    font-size: 12px;
+  }
 }/*# sourceMappingURL=SessionChart.css.map */

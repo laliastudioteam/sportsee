@@ -8,7 +8,7 @@ function ActivityLoad() {
       // Si dataFake est 0, on fait un fetch pour obtenir les données depuis l'API
       const res = await fetch("http://localhost:3000/user/" + user + "/activity");
       const data = await res.json();
-      
+   
       let sessions = data.data.sessions;
       let convertedArray = [];
 

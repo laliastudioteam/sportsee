@@ -5,11 +5,10 @@ import ScoreLoad from "./ScoreLoad";
 
 import '../styles/ScoreChart.css'
 
-const data = [
+const datatest = [
   {
     name: 'score',
-    uv: 92,
-    pv: 2400,
+    uv: 12,
     fill: '#F00',
   },
 ];
@@ -32,8 +31,8 @@ export default class ScoreChart extends PureComponent {
 
     const id=this.props.user.id;
     const fake=this.props.data.fake;
-    ScoreLoad.getScore({id, fake}).then((data) => {
-      this.setState({dataToDisplay : data, loading: false });
+    ScoreLoad.getScore(id, fake).then((data) => {
+;      this.setState({dataToDisplay : data, loading: false });
   })
   .catch((error) => {
       console.error('Erreur de récupération des données:', error);
@@ -45,7 +44,7 @@ export default class ScoreChart extends PureComponent {
   render() {
 
     const { dataToDisplay, loading, error } = this.state;
-console.log(dataToDisplay*100);
+
     if (loading) {
       return <p>Chargement des données</p>;
     }
@@ -82,11 +81,12 @@ console.log(dataToDisplay*100);
         innerRadius="90%"  // Rayon intérieur
         outerRadius="100%"  // Rayon extérieur
         barSize={10}  // Épaisseur de la barre
-        data={dataToDisplay * 100}  // Les données avec la seule barre
+        data={dataToDisplay}  // Les données avec la seule barre
+
         startAngle={90}  // Angle de départ pour la barre
         endAngle={450}  // Angle de fin pour la barre (360 + 90)
       >
-        <PolarAngleAxis type="number" domain={[0, 100]} tick={false}/>
+        <PolarAngleAxis type="number" domain={[0, 1]} tick={false}/>
         <RadialBar
           minAngle={15}
           clockWise
