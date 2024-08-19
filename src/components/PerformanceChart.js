@@ -27,6 +27,7 @@ class PerformanceChart extends PureComponent {
 		PerformanceLoad.getPerformance(this.props.user.id, this.props.data.fake)
 			.then(data => {
 				this.setState({dataToDisplay: data, loading: false});
+				console.log(data);
 			})
 			.catch(error => {
 				console.error("Erreur de récupération des données:", error);
@@ -35,7 +36,7 @@ class PerformanceChart extends PureComponent {
 	}
 	render() {
 		const {dataToDisplay, loading, error} = this.state;
-
+		console.log(dataToDisplay);
 		if (loading) {
 			return <p>Chargement des données</p>;
 		}
@@ -52,7 +53,7 @@ class PerformanceChart extends PureComponent {
 							cx="50%"
 							cy="50%"
 							outerRadius="80%"
-							data={dataToDisplay}
+							data={dataToDisplay.kind}
 							fill="rgba(255, 1, 1, 0.7)"
 						>
 							<PolarGrid />

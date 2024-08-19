@@ -1,9 +1,9 @@
 export default class Activity {
 	userId;
-	sessions;
+	kind;
 
 	constructor(data) {
 		this.userId = data.userId;
-		this.sessions = data.sessions;
+		this.kind = data.kind;
 	}
 }

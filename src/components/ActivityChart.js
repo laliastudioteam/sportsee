@@ -69,7 +69,7 @@ class ActivityChart extends PureComponent {
 						<BarChart
 							width={50}
 							height={1000}
-							data={dataToDisplay}
+							data={dataToDisplay.sessions}
 							margin={{
 								top: 5,
 								right: 30,

@@ -10,14 +10,6 @@ import ScoreLoad from "./ScoreLoad";
 
 import "../styles/ScoreChart.css";
 
-const datatest = [
-	{
-		name: "score",
-		uv: 12,
-		fill: "#F00",
-	},
-];
-
 export default class ScoreChart extends PureComponent {
 	constructor(props) {
 		super(props);
@@ -35,6 +27,7 @@ export default class ScoreChart extends PureComponent {
 		ScoreLoad.getScore(id, fake)
 			.then(data => {
 				this.setState({dataToDisplay: data, loading: false});
+				console.log(data);
 			})
 			.catch(error => {
 				console.error("Erreur de récupération des données:", error);
@@ -83,7 +76,7 @@ export default class ScoreChart extends PureComponent {
 							innerRadius="90%" // Rayon intérieur
 							outerRadius="100%" // Rayon extérieur
 							barSize={10} // Épaisseur de la barre
-							data={dataToDisplay} // Les données avec la seule barre
+							data={dataToDisplay.score} // Les données avec la seule barre
 							startAngle={90} // Angle de départ pour la barre
 							endAngle={450} // Angle de fin pour la barre (360 + 90)
 						>

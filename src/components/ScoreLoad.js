@@ -1,4 +1,5 @@
 import {dataUser} from "../data/mockup.js";
+import Score from "../models/Score.js";
 
 function convertDataScore(data) {
 	let dataArray = [];
@@ -19,7 +20,8 @@ function convertDataScore(data) {
 			},
 		];
 	}
-	return dataArray;
+	console.log(dataArray);
+	return {userId: data.data.id, score: dataArray};
 }
 
 function ScoreLoad() {
@@ -29,14 +31,14 @@ function ScoreLoad() {
 			const res = await fetch("http://localhost:3000/user/" + user);
 			const data = await res.json();
 
-			return convertDataScore(data);
+			return new Score(convertDataScore(data));
 		} else {
 			// Si dataFake n'est pas 0, on utilise les données du mock
 
 			return new Promise((resolve, reject) => {
 				resolve(dataUser); // On résout directement avec les données mockées
 			}).then(resultat => {
-				return convertDataScore(resultat);
+				return new Score(convertDataScore(resultat));
 			});
 		}
 	};

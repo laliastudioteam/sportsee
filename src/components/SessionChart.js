@@ -66,7 +66,7 @@ class SessionChart extends PureComponent {
 						<LineChart
 							width={500}
 							height={300}
-							data={dataToDisplay}
+							data={dataToDisplay.sessions}
 							margin={{
 								top: 5,
 								right: 30,
