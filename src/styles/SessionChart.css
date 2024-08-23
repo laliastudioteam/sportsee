@@ -8,7 +8,7 @@
 
 .sessionChart-container {
   position: relative;
-  background: #ff0000;
+  background: linear-gradient(to right, #ff0000, #911e1e);
   display: flex;
   border-radius: 10px;
   width: calc(100% - 40px);
