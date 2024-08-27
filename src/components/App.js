@@ -13,7 +13,7 @@ import Communaute from "../pages/Communaute";
 import Unknown from "../pages/Unknown";
 
 import "../styles/App.css";
-const fakeData = 1;
+const fakeData = 0;
 
 function App() {
 	return (

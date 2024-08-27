@@ -77,13 +77,14 @@ class ActivityChart extends PureComponent {
 								bottom: 5,
 							}}
 						>
-							<CartesianGrid strokeDasharray="3 3" />
+							<CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
 							<XAxis dataKey="day" />
 							<YAxis orientation="right" />
 							<Tooltip content={<CustomTooltip />} />
 							<Legend verticalAlign="top" align="right" />
 							<Bar
 								dataKey="kg"
+								name="Poids (kg)"
 								fill="#000000"
 								barSize={10}
 								radius={[10, 10, 0, 0]}
@@ -91,6 +92,7 @@ class ActivityChart extends PureComponent {
 							/>
 							<Bar
 								dataKey="cal"
+								name="Calories brûlées (kCal)"
 								fill="#FF0000"
 								barSize={10}
 								radius={[10, 10, 0, 0]}
