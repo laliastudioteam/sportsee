@@ -24,6 +24,21 @@ const CustomTooltip = ({active, payload, label}) => {
 	}
 };
 
+// Customization du Curseur
+const CustomCursor = ({points, width, height}) => {
+	const {x} = points[0];
+	return (
+		<rect
+			x={x}
+			y={0}
+			width={width - x}
+			height={height}
+			fill="#000000"
+			fillOpacity={0.3}
+		/>
+	);
+};
+
 class SessionChart extends PureComponent {
 	constructor(props) {
 		super(props);
@@ -74,11 +89,14 @@ class SessionChart extends PureComponent {
 								bottom: 5,
 							}}
 						>
-							<XAxis dataKey="day" stroke="#ffffff" />
+							<XAxis dataKey="day" stroke="#ffffff" tickLine={false} axisLine={false} />
 							<YAxis tick={false} hide />
-							<Tooltip content={<CustomTooltip />} />
+							<Tooltip
+								content={<CustomTooltip />}
+								cursor={<CustomCursor width={500} height={300} />}
+							/>
 
-							<Line type="monotone" dataKey="nb" stroke="#ffffff" />
+							<Line type="monotone" dataKey="nb" stroke="#ffffff" dot={false} />
 						</LineChart>
 					</ResponsiveContainer>
 				) : (

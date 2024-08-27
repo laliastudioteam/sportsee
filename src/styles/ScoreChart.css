@@ -46,6 +46,7 @@
   align-items: center; /** Y-axis align **/
   justify-content: center; /** X-axis align **/
   margin-left: -20px;
+  z-index: 1;
 }
 .scoreChart-subtitle-text {
   font-weight: 500;

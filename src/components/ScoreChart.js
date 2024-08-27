@@ -80,6 +80,15 @@ export default class ScoreChart extends PureComponent {
 							startAngle={90} // Angle de départ pour la barre
 							endAngle={450} // Angle de fin pour la barre (360 + 90)
 						>
+							<text
+								x="50%"
+								y="60%"
+								textAnchor="middle"
+								dominantBaseline="middle"
+								style={{fill: "white", fontSize: "260px", zindex: "0"}}
+							>
+								●
+							</text>
 							<PolarAngleAxis type="number" domain={[0, 1]} tick={false} />
 							<RadialBar
 								minAngle={15}
